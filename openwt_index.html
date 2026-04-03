@@ -576,81 +576,149 @@
                 padding: 0 20px;
             }
         }
+
+        /* ── Skeleton ── */
+        @keyframes shimmer {
+            0% { background-position: -600px 0; }
+            100% { background-position: 600px 0; }
+        }
+
+        .sk {
+            background: linear-gradient(90deg, #ebebeb 25%, #f5f5f5 50%, #ebebeb 75%);
+            background-size: 600px 100%;
+            animation: shimmer 1.4s infinite linear;
+            border-radius: 6px;
+        }
+
+        .sk-line { height: 14px; margin-bottom: 10px; }
+        .sk-line.short { width: 40%; }
+        .sk-line.mid { width: 65%; }
+        .sk-line.full { width: 100%; }
+        .sk-title { height: 36px; width: 70%; margin-bottom: 14px; }
+        .sk-tag { height: 20px; width: 80px; margin-bottom: 16px; }
+        .sk-block { height: 80px; width: 100%; margin-bottom: 16px; }
+        .sk-btn { height: 44px; width: 100%; border-radius: 9px; margin-bottom: 10px; }
+        .sk-nav { height: 14px; width: 60px; }
+
+        #skeleton { display: block; }
+        #content { display: none; }
     </style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="nav-inner">
-            <div class="logo">设备使用指南</div>
-            <div class="nav-links" id="nav-links"></div>
-        </div>
-    </nav>
-
-    <div class="page">
-        <div class="page-header">
-            <div class="tag">使用说明</div>
-            <h1 id="header-title"></h1>
-            <p id="header-subtitle"></p>
-        </div>
-
-        <div class="grid">
-            <!-- Steps -->
-            <div class="card">
-                <div class="card-label">注意事项</div>
-                <div class="steps" id="steps-container"></div>
+    <!-- 骨架屏 -->
+    <div id="skeleton">
+        <nav>
+            <div class="nav-inner">
+                <div class="logo">设备使用指南</div>
+                <div class="nav-links" style="display:flex;gap:28px;">
+                    <div class="sk sk-nav"></div>
+                    <div class="sk sk-nav"></div>
+                    <div class="sk sk-nav"></div>
+                </div>
             </div>
-
-            <!-- Sidebar -->
-            <div>
-                <div class="card cta-card-openwrt">
-                    <div class="card-label">OpenWrt 管理面板</div>
-                    <p>点击下方按钮打开 OpenWrt LuCI 管理界面。</p>
-                    <a id="openwrt-btn" href="#" class="cta-btn" target="_blank">进入 OpenWrt →</a>
-                    <div id="openwrt-addr" class="cta-addr"></div>
+        </nav>
+        <div class="page">
+            <div class="page-header">
+                <div class="sk sk-tag"></div>
+                <div class="sk sk-title"></div>
+                <div class="sk sk-line mid"></div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="sk sk-line short" style="margin-bottom:20px;"></div>
+                    <div class="sk sk-block"></div>
+                    <div class="sk sk-block"></div>
+                    <div class="sk sk-block"></div>
+                    <div class="sk sk-block" style="margin-bottom:0;"></div>
                 </div>
-
-                <div class="card cta-card" style="margin-top:20px;">
-                    <div class="card-label">Picoclaw 小龙虾</div>
-                    <p>注意事项阅读完成后，点击下方按钮打开 Picoclaw 小龙虾 Web 页面。</p>
-                    <a id="picoclaw-btn" href="#" class="cta-btn" target="_blank">进入 Picoclaw →</a>
-                    <div id="picoclaw-addr" class="cta-addr"></div>
-                </div>
-
-                <div class="card" style="margin-top:20px;">
-                    <div class="card-label">工具下载</div>
-                    <div class="dl-list">
-                        <a href="基带网络备份.7z" class="dl-btn">
-                            <div class="dl-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                                    <polyline points="7 10 12 15 17 10" />
-                                    <line x1="12" y1="15" x2="12" y2="3" />
-                                </svg>
-                            </div>
-                            <div>网络基带<div class="dl-meta">基带网络备份.7z</div>
-                            </div>
-                        </a>
-                        <a href="9008drive.7z" class="dl-btn">
-                            <div class="dl-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                                    <polyline points="7 10 12 15 17 10" />
-                                    <line x1="12" y1="15" x2="12" y2="3" />
-                                </svg>
-                            </div>
-                            <div>9008 驱动<div class="dl-meta">9008drive.7z</div>
-                            </div>
-                        </a>
+                <div>
+                    <div class="card" style="background:#0f2233;border-color:#1a3a52;">
+                        <div class="sk sk-line short" style="margin-bottom:16px;background:linear-gradient(90deg,#1a3a52 25%,#1e4460 50%,#1a3a52 75%);background-size:600px 100%;"></div>
+                        <div class="sk sk-line mid" style="background:linear-gradient(90deg,#1a3a52 25%,#1e4460 50%,#1a3a52 75%);background-size:600px 100%;"></div>
+                        <div class="sk sk-btn" style="margin-top:16px;background:linear-gradient(90deg,#1a5a8a 25%,#1e6fa8 50%,#1a5a8a 75%);background-size:600px 100%;"></div>
                     </div>
-                </div>
-
-                <div id="articles-container" style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
+                    <div class="card" style="margin-top:20px;background:#1a1a18;border-color:#1a1a18;">
+                        <div class="sk sk-line short" style="margin-bottom:16px;background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;"></div>
+                        <div class="sk sk-line mid" style="background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;"></div>
+                        <div class="sk sk-btn" style="margin-top:16px;background:linear-gradient(90deg,#c0521e 25%,#e8622a 50%,#c0521e 75%);background-size:600px 100%;"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- 真实内容 -->
+    <div id="content">
+        <nav>
+            <div class="nav-inner">
+                <div class="logo">设备使用指南</div>
+                <div class="nav-links" id="nav-links"></div>
+            </div>
+        </nav>
+
+        <div class="page">
+            <div class="page-header">
+                <div class="tag">使用说明</div>
+                <h1 id="header-title"></h1>
+                <p id="header-subtitle"></p>
+            </div>
+
+            <div class="grid">
+                <!-- Steps -->
+                <div class="card">
+                    <div class="card-label">注意事项</div>
+                    <div class="steps" id="steps-container"></div>
+                </div>
+
+                <!-- Sidebar -->
+                <div>
+                    <div class="card cta-card-openwrt">
+                        <div class="card-label">OpenWrt 管理面板</div>
+                        <p>点击下方按钮打开 OpenWrt LuCI 管理界面。</p>
+                        <a id="openwrt-btn" href="#" class="cta-btn" target="_blank">进入 OpenWrt →</a>
+                        <div id="openwrt-addr" class="cta-addr"></div>
+                    </div>
+
+                    <div class="card cta-card" style="margin-top:20px;">
+                        <div class="card-label">Picoclaw 小龙虾</div>
+                        <p>注意事项阅读完成后，点击下方按钮打开 Picoclaw 小龙虾 Web 页面。</p>
+                        <a id="picoclaw-btn" href="#" class="cta-btn" target="_blank">进入 Picoclaw →</a>
+                        <div id="picoclaw-addr" class="cta-addr"></div>
+                    </div>
+
+                    <div class="card" style="margin-top:20px;">
+                        <div class="card-label">工具下载</div>
+                        <div class="dl-list">
+                            <a href="基带网络备份.7z" class="dl-btn">
+                                <div class="dl-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                </div>
+                                <div>网络基带<div class="dl-meta">基带网络备份.7z</div></div>
+                            </a>
+                            <a href="9008drive.7z" class="dl-btn">
+                                <div class="dl-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                </div>
+                                <div>9008 驱动<div class="dl-meta">9008drive.7z</div></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="articles-container" style="margin-top:14px; display:flex; flex-direction:column; gap:10px;"></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /#content -->
 
     <script>
         // ── 设备按钮 URL（不走远程更新）──
@@ -669,6 +737,9 @@
 
         // ── 渲染函数 ──
         function render(data) {
+            // 切换显示
+            document.getElementById('skeleton').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
             // 导航
             document.getElementById('nav-links').innerHTML = data.nav.map(n =>
                 `<a href="${n.url}" target="_blank">${n.text}</a>`
