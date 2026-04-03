@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设备使用指南</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #fafaf9;
+            --surface: #ffffff;
+            --border: #e8e8e4;
+            --text: #1a1a18;
+            --muted: #8a8a82;
+            --accent: #e8622a;
+            --accent-light: #fff3ee;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            font-size: 15px;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(250, 250, 249, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* ── Page ── */
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 28px 48px 80px;
+        }
+
+        /* ── Header ── */
+        .page-header {
+            margin-bottom: 48px;
+        }
+
+        .page-header .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            color: var(--text);
+        }
+
+        .page-header p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 480px;
+        }
+
+        /* ── Grid ── */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .card+.card {
+            margin-top: 20px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        /* ── Steps ── */
+        .steps {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .step:first-child {
+            padding-top: 0;
+        }
+
+        .step-n {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            margin-top: 1px;
+        }
+
+        .step.warn .step-n {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        .step-body {
+            flex: 1;
+        }
+
+        .step-body p {
+            font-size: 14px;
+            line-height: 1.75;
+            color: #444;
+        }
+
+        .step-body .warn-text {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ── Inline code ── */
+        code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 12px;
+            background: #f0f0ec;
+            padding: 1px 6px;
+            border-radius: 4px;
+            color: #333;
+        }
+
+        /* ── Terminal block ── */
+        .terminal {
+            margin-top: 12px;
+            background: #0d1117;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 14px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .terminal-dots span:nth-child(1) {
+            background: #ff5f57;
+        }
+
+        .terminal-dots span:nth-child(2) {
+            background: #febc2e;
+        }
+
+        .terminal-dots span:nth-child(3) {
+            background: #28c840;
+        }
+
+        .terminal-title {
+            font-size: 11px;
+            color: #8b949e;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .copy-btn {
+            font-size: 11px;
+            color: #8b949e;
+            background: none;
+            border: 1px solid #30363d;
+            border-radius: 5px;
+            padding: 3px 10px;
+            cursor: pointer;
+            font-family: 'SF Mono', monospace;
+            transition: all 0.15s;
+        }
+
+        .copy-btn:hover {
+            color: #e6edf3;
+            border-color: #8b949e;
+        }
+
+        .copy-btn.copied {
+            color: #3fb950;
+            border-color: #3fb950;
+        }
+
+        .terminal-body {
+            padding: 14px 16px;
+        }
+
+        .terminal-body pre {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #e6edf3;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 0;
+        }
+
+        .terminal-body pre .prompt {
+            color: #3fb950;
+            user-select: none;
+        }
+
+        .terminal-body pre .cmd {
+            color: #e6edf3;
+        }
+
+        .terminal-body pre .comment {
+            color: #8b949e;
+        }
+
+        /* ── Download buttons ── */
+        .dl-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.15s;
+            background: var(--bg);
+        }
+
+        .dl-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .dl-icon {
+            width: 34px;
+            height: 34px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .dl-icon svg {
+            width: 15px;
+            height: 15px;
+            stroke: var(--muted);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .dl-btn:hover .dl-icon {
+            border-color: var(--accent);
+        }
+
+        .dl-btn:hover .dl-icon svg {
+            stroke: var(--accent);
+        }
+
+        .dl-meta {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 1px;
+            font-weight: 400;
+        }
+
+        /* ── CTA ── */
+        .cta-card {
+            background: var(--text);
+            border-color: var(--text);
+        }
+
+        .cta-card .card-label {
+            color: #666;
+        }
+
+        .cta-card p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .cta-card-openwrt {
+            background: #0f2233;
+            border-color: #1a3a52;
+        }
+
+        .cta-card-openwrt .card-label {
+            color: #4a7fa5;
+        }
+
+        .cta-card-openwrt p {
+            font-size: 13px;
+            color: #6a9ab8;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .cta-card-openwrt .cta-btn {
+            background: #1a6fa8;
+        }
+
+        .cta-card-openwrt .cta-btn:hover {
+            background: #1d7fc0;
+        }
+
+        .cta-card-openwrt .cta-addr {
+            color: #3a6a88;
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            background: var(--accent);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: -0.2px;
+            transition: opacity 0.15s, transform 0.15s;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .cta-addr {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            font-family: 'SF Mono', monospace;
+        }
+
+        /* ── Articles section ── */
+        .articles-section {
+            background: #f0f0ec;
+            border-top: 1px solid var(--border);
+            padding: 48px 48px 56px;
+        }
+
+        .articles-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .articles-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .article-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.15s;
+        }
+
+        .article-card:hover {
+            background: var(--accent-light);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(232, 98, 42, 0.1);
+        }
+
+        .article-icon {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            background: var(--accent-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .article-icon svg {
+            width: 15px;
+            height: 15px;
+            stroke: var(--accent);
+        }
+
+        .article-card:hover .article-icon {
+            background: #fde8dc;
+        }
+
+        .article-body {
+            flex: 1;
+        }
+
+        .article-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .article-meta {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .article-arrow {
+            font-size: 14px;
+            color: var(--accent);
+            opacity: 0.5;
+            transition: opacity 0.15s;
+        }
+
+        .article-card:hover .article-arrow {
+            opacity: 1;
+        }
+
+        @media (max-width: 700px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-section {
+                padding: 32px 20px 40px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">设备使用指南</div>
+            <div class="nav-links" id="nav-links"></div>
+        </div>
+    </nav>
+
+    <div class="page">
+        <div class="page-header">
+            <div class="tag">使用说明</div>
+            <h1 id="header-title"></h1>
+            <p id="header-subtitle"></p>
+        </div>
+
+        <div class="grid">
+            <!-- Steps -->
+            <div class="card">
+                <div class="card-label">注意事项</div>
+                <div class="steps" id="steps-container"></div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+                <div class="card cta-card-openwrt">
+                    <div class="card-label">OpenWrt 管理面板</div>
+                    <p>点击下方按钮打开 OpenWrt LuCI 管理界面。</p>
+                    <a id="openwrt-btn" href="#" class="cta-btn" target="_blank">进入 OpenWrt →</a>
+                    <div id="openwrt-addr" class="cta-addr"></div>
+                </div>
+
+                <div class="card cta-card" style="margin-top:20px;">
+                    <div class="card-label">Picoclaw 小龙虾</div>
+                    <p>注意事项阅读完成后，点击下方按钮打开 Picoclaw 小龙虾 Web 页面。</p>
+                    <a id="picoclaw-btn" href="#" class="cta-btn" target="_blank">进入 Picoclaw →</a>
+                    <div id="picoclaw-addr" class="cta-addr"></div>
+                </div>
+
+                <div class="card" style="margin-top:20px;">
+                    <div class="card-label">工具下载</div>
+                    <div class="dl-list">
+                        <a href="基带网络备份.7z" class="dl-btn">
+                            <div class="dl-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                            </div>
+                            <div>网络基带<div class="dl-meta">基带网络备份.7z</div>
+                            </div>
+                        </a>
+                        <a href="9008drive.7z" class="dl-btn">
+                            <div class="dl-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                            </div>
+                            <div>9008 驱动<div class="dl-meta">9008drive.7z</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="articles-container" style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── 设备按钮 URL（不走远程更新）──
+        const host = location.hostname || '192.168.68.1';
+        document.getElementById('picoclaw-btn').href = 'http://' + host + ':18800';
+        document.getElementById('picoclaw-addr').textContent = host + ':18800';
+        document.getElementById('openwrt-btn').href = 'http://' + host + '/cgi-bin/luci';
+        document.getElementById('openwrt-addr').textContent = host + '/cgi-bin/luci';
+
+        // ── 内置兜底内容（首次无网络时使用）──
+        const FALLBACK = { "version": "1.0", "nav": [{ "text": "闲鱼", "url": "https://m.tb.cn/h.ikewKeE?tk=sY5z5265Lof CZ007" }, { "text": "GitHub", "url": "https://github.com/x7780" }, { "text": "刷机系统备份", "url": "https://www.123912.com/s/dgXbjv-Gfsfd" }], "header": { "title": "开始之前，请仔细阅读", "subtitle": "先阅读使用说明，避免因操作不当导致功能损坏。" }, "steps": [{ "warn": false, "text": "设备支持插入手机卡，兼容网通、移动、电信。虚拟号及部分被屏蔽号码可能无法使用，推荐优先使用联通或电信，移动在部分地区受限。", "warnings": ["⚠ 如果你感觉手机卡不能使用，不要着急，可以使用家里网络，或者插入电脑直接连接设置。", "⚠ 设备上的盖帽不要拿掉，拿掉会导致手机卡信号变弱。"] }, { "warn": false, "text": "系统热点与路由器 WiFi 存在冲突，二者只能同时存在一个。连接家庭 WiFi 后热点可能自动断开，连接家里wifi是要设置ip，避免 IP 丢失。", "warnings": ["⚠ 使用手机卡热点，硬件会发热，这是硬件通病。"] }, { "warn": true, "text": "网络基带为设备独有，包含移动网络设置与驱动，每台设备均不相同，丢失无法找回，我这没有备份。", "warnings": ["⚠ 一旦丢失无法找回，将导致外部手机卡无法使用。请务必提前备份，切勿删除。"] }, { "warn": false, "text": "如果遇到OPKG无法安装，请去OPKG配置文件，里面第一个源连接处下载kernal开头的软件包，安装后重启", "warnings": ["⚠ 出现这种问题因为SNAPSHOT版本过期了，更新一下就好了。"] }, { "warn": false, "text": "如需管理自启动项，可在 OpenWrt 后台按以下路径操作，在「本地启动脚本」中编辑或删除对应启动项。", "breadcrumb": ["OpenWrt 后台", "系统", "启动项", "本地启动脚本"] }, { "warn": false, "text": "如果不想使用外部大卡，可以自行更改切开脚本（部分机型没有这个脚本）", "warnings": ["⚠ 如果你在位置没找到切卡脚本，那只能说明你的机器不能切卡"], "terminal": { "title": "bash — 切卡脚本位置", "code": "/etc/cardswitch/cardswitch.sh" } }, { "warn": false, "text": "如果你感觉picoclaw ai 这个小龙虾太站内存了，可以在启动项里面删除", "warnings": ["⚠ 这个是go写的小龙虾，可以帮你完成一些工作，运行任务时占内存"], "terminal": { "title": "bash — picoclaw", "code": "cd /root/picoclaw && ./picoclaw-launcher -public > /tmp/picoclaw.log 2>&1 &" } }], "articles": [{ "title": "随身 WiFi 刷 Debian 系统", "meta": "CSDN · blog.csdn.net", "url": "https://blog.csdn.net/qq_43359234/article/details/137798983" }, { "title": "高通 410 9008 模式 + 刷 Debian 13 图文", "meta": "cpolar · www.cpolar.com", "url": "https://www.cpolar.com/blog/flash-debian-13-and-enable-ssh-remote-access" }] };
+
+        // ── 远程 content.json 地址（改成你的 GitHub 用户名和仓库名）──
+        const REMOTE_URL = 'https://cdn.jsdelivr.net/gh/x7780/YOUR_REPO@main/content.json';
+        const CACHE_KEY = 'guide_content';
+
+        // ── 渲染函数 ──
+        function render(data) {
+            // 导航
+            document.getElementById('nav-links').innerHTML = data.nav.map(n =>
+                `<a href="${n.url}" target="_blank">${n.text}</a>`
+            ).join('');
+
+            // 标题
+            document.getElementById('header-title').textContent = data.header.title;
+            document.getElementById('header-subtitle').textContent = data.header.subtitle;
+
+            // 步骤
+            const svgIcon = `<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
+            document.getElementById('steps-container').innerHTML = data.steps.map((s, i) => {
+                let extra = '';
+                if (s.warnings) extra += s.warnings.map(w => `<span class="warn-text">${w}</span>`).join('');
+                if (s.breadcrumb) {
+                    const items = s.breadcrumb.map((b, bi) => {
+                        const isLast = bi === s.breadcrumb.length - 1;
+                        const style = isLast
+                            ? 'font-size:13px;font-weight:600;background:var(--accent-light);border:1px solid var(--accent);border-radius:6px;padding:5px 10px;color:var(--accent);'
+                            : 'font-size:13px;font-weight:600;background:#f0f0ec;border:1px solid var(--border);border-radius:6px;padding:5px 10px;color:var(--text);';
+                        return `<span style="${style}">${b}</span>${!isLast ? '<span style="color:var(--muted);font-size:13px;">→</span>' : ''}`;
+                    }).join('');
+                    extra += `<div style="margin-top:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">${items}</div>`;
+                }
+                if (s.terminal) {
+                    const id = 'term-' + i;
+                    extra += `<div class="terminal"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><div class="terminal-title">${s.terminal.title}</div><button class="copy-btn" onclick="copyCode(this,'${id}')">复制</button></div><div class="terminal-body"><pre id="${id}"><span class="prompt">$ </span><span class="cmd">${s.terminal.code}</span></pre></div></div>`;
+                }
+                return `<div class="step${s.warn ? ' warn' : ''}"><div class="step-n">${i + 1}</div><div class="step-body"><p>${s.text}</p>${extra}</div></div>`;
+            }).join('');
+
+            // 文章
+            document.getElementById('articles-container').innerHTML = data.articles.map(a =>
+                `<a href="${a.url}" target="_blank" class="article-card"><div class="article-icon">${svgIcon}</div><div class="article-body"><div class="article-title">${a.title}</div><div class="article-meta">${a.meta}</div></div><div class="article-arrow">→</div></a>`
+            ).join('');
+        }
+
+        // ── 加载逻辑：远程优先，失败用缓存，缓存没有用内置 ──
+        async function loadContent() {
+            try {
+                const res = await Promise.race([
+                    fetch(REMOTE_URL + '?t=' + Date.now()),
+                    new Promise((_, reject) => setTimeout(() => reject('timeout'), 4000))
+                ]);
+                const data = await res.json();
+                localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+                render(data);
+            } catch {
+                const cached = localStorage.getItem(CACHE_KEY);
+                render(cached ? JSON.parse(cached) : FALLBACK);
+            }
+        }
+
+        loadContent();
+
+        // ── 复制命令 ──
+        function copyCode(btn, id) {
+            const el = document.getElementById(id);
+            const text = el.innerText.replace(/^\$ /gm, '').trim();
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = '已复制 ✓';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

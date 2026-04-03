@@ -1,0 +1,20 @@
+安卓
+mini_httpd
+
+加入到rc.local启动
+
+
+#!/bin/sh -e
+# 【修复1】先关闭-e，避免命令失败导致脚本退出
+set +e
+# 重启USB网络（加重试，避免开机时网络未就绪）
+nmcli connection up USB
+sleep 5
+nmcli connection down USB
+#进入目录+启动picoclaw，加后台&和日志
+sleep 5
+cd /root/picoclaw && nohup ./picoclaw-launcher -public > /root/picoclaw.log 2>&1 &
+#启动mini_httpd，日志写到固定文件，方便排查
+sleep 5
+nohup mini_httpd -p 80 -d /root/www -D > /dev/null 2>&1 &
+exit 0

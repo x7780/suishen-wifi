@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设备使用指南</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #fafaf9;
+            --surface: #ffffff;
+            --border: #e8e8e4;
+            --text: #1a1a18;
+            --muted: #8a8a82;
+            --accent: #e8622a;
+            --accent-light: #fff3ee;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            font-size: 15px;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(250, 250, 249, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* ── Page ── */
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 28px 48px 80px;
+        }
+
+        /* ── Header ── */
+        .page-header {
+            margin-bottom: 48px;
+        }
+
+        .page-header .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            color: var(--text);
+        }
+
+        .page-header p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 480px;
+        }
+
+        /* ── Grid ── */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .card+.card {
+            margin-top: 20px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        /* ── Steps ── */
+        .steps {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .step:first-child {
+            padding-top: 0;
+        }
+
+        .step-n {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            margin-top: 1px;
+        }
+
+        .step.warn .step-n {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        .step-body {
+            flex: 1;
+        }
+
+        .step-body p {
+            font-size: 14px;
+            line-height: 1.75;
+            color: #444;
+        }
+
+        .step-body .warn-text {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ── Inline code ── */
+        code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 12px;
+            background: #f0f0ec;
+            padding: 1px 6px;
+            border-radius: 4px;
+            color: #333;
+        }
+
+        /* ── Terminal block ── */
+        .terminal {
+            margin-top: 12px;
+            background: #0d1117;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 14px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .terminal-dots span:nth-child(1) {
+            background: #ff5f57;
+        }
+
+        .terminal-dots span:nth-child(2) {
+            background: #febc2e;
+        }
+
+        .terminal-dots span:nth-child(3) {
+            background: #28c840;
+        }
+
+        .terminal-title {
+            font-size: 11px;
+            color: #8b949e;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .copy-btn {
+            font-size: 11px;
+            color: #8b949e;
+            background: none;
+            border: 1px solid #30363d;
+            border-radius: 5px;
+            padding: 3px 10px;
+            cursor: pointer;
+            font-family: 'SF Mono', monospace;
+            transition: all 0.15s;
+        }
+
+        .copy-btn:hover {
+            color: #e6edf3;
+            border-color: #8b949e;
+        }
+
+        .copy-btn.copied {
+            color: #3fb950;
+            border-color: #3fb950;
+        }
+
+        .terminal-body {
+            padding: 14px 16px;
+        }
+
+        .terminal-body pre {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #e6edf3;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 0;
+        }
+
+        .terminal-body pre .prompt {
+            color: #3fb950;
+            user-select: none;
+        }
+
+        .terminal-body pre .cmd {
+            color: #e6edf3;
+        }
+
+        .terminal-body pre .comment {
+            color: #8b949e;
+        }
+
+        /* ── Download buttons ── */
+        .dl-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.15s;
+            background: var(--bg);
+        }
+
+        .dl-btn:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .dl-icon {
+            width: 34px;
+            height: 34px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .dl-icon svg {
+            width: 15px;
+            height: 15px;
+            stroke: var(--muted);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .dl-btn:hover .dl-icon {
+            border-color: var(--accent);
+        }
+
+        .dl-btn:hover .dl-icon svg {
+            stroke: var(--accent);
+        }
+
+        .dl-meta {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 1px;
+            font-weight: 400;
+        }
+
+        /* ── CTA ── */
+        .cta-card {
+            background: var(--text);
+            border-color: var(--text);
+        }
+
+        .cta-card .card-label {
+            color: #666;
+        }
+
+        .cta-card p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            background: var(--accent);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: -0.2px;
+            transition: opacity 0.15s, transform 0.15s;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .cta-addr {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 11px;
+            color: #555;
+            font-family: 'SF Mono', monospace;
+        }
+
+        /* ── Articles section ── */
+        .articles-section {
+            background: #f0f0ec;
+            border-top: 1px solid var(--border);
+            padding: 48px 48px 56px;
+        }
+
+        .articles-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .articles-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .article-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.15s;
+        }
+
+        .article-card:hover {
+            background: var(--accent-light);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(232, 98, 42, 0.1);
+        }
+
+        .article-icon {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            background: var(--accent-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .article-icon svg {
+            width: 15px;
+            height: 15px;
+            stroke: var(--accent);
+        }
+
+        .article-card:hover .article-icon {
+            background: #fde8dc;
+        }
+
+        .article-body {
+            flex: 1;
+        }
+
+        .article-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .article-meta {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .article-arrow {
+            font-size: 14px;
+            color: var(--accent);
+            opacity: 0.5;
+            transition: opacity 0.15s;
+        }
+
+        .article-card:hover .article-arrow {
+            opacity: 1;
+        }
+
+        @media (max-width: 700px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-section {
+                padding: 32px 20px 40px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">设备使用指南</div>
+            <div class="nav-links">
+                <a href="https://m.tb.cn/h.ikewKeE?tk=sY5z5265Lof CZ007" target="_blank">闲鱼</a>
+                <a href="https://github.com/x7780" target="_blank">GitHub</a>
+                <a href="https://www.123912.com/s/dgXbjv-Gfsfd" target="_blank">刷机系统备份</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page">
+        <div class="page-header">
+            <div class="tag">使用说明</div>
+            <h1>开始之前，请仔细阅读</h1>
+            <p>先阅读使用说明，避免因操作不当导致功能损坏。</p>
+        </div>
+
+        <div class="grid">
+            <!-- Steps -->
+            <div class="card">
+                <div class="card-label">注意事项</div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-n">1</div>
+                        <div class="step-body">
+                            <p>设备支持插入手机卡，兼容网通、移动、电信。虚拟号及部分被屏蔽号码可能无法使用，推荐优先使用联通或电信，移动在部分地区受限。</p>
+                            <span class="warn-text">⚠ 如果你感觉手机卡不能使用，不要着急，可以使用家里网络，或者插入电脑直接连接设置。</span>
+                            <span class="warn-text"
+                                style="margin-top:6px;">⚠ 设备上的盖帽不要拿掉，拿掉会导致手机卡信号变弱，进而出现调制解调器掉驱动的问题，表现为反复重启或联网掉线。手机卡驱动是从安卓移植过来的，本身不稳定，这是设备通病，无法根治。如果不需要使用手机卡，可以停止调制解调器和网桥服务来彻底规避此问题。</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-n">2</div>
+                        <div class="step-body">
+                            <p>系统热点与路由器 WiFi 存在冲突，二者只能同时存在一个。连接家庭 WiFi 后热点可能自动断开，建议提前通过以下命令设置固定 IP，避免 IP 丢失。</p>
+                            <span class="warn-text">⚠
+                                手机卡热点模式下传送文件会很慢或断链，主要原因是使用的安卓驱动，不是原生编译，会出现这样的问题正常，关闭基带和网桥，也可以重新刷linux系统，不用安卓基带就可以解决。</span>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <div class="terminal-dots"><span></span><span></span><span></span></div>
+                                    <div class="terminal-title">bash</div>
+                                    <button class="copy-btn" onclick="copyCode(this, 'nmtui')">复制</button>
+                                </div>
+                                <div class="terminal-body">
+                                    <pre><span class="prompt">$ </span><span class="cmd" id="nmtui">nmtui</span></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step warn">
+                        <div class="step-n">3</div>
+                        <div class="step-body">
+                            <p>网络基带为设备独有，包含移动网络设置与驱动，每台设备均不相同，丢失无法找回，我这没有备份。</p>
+                            <span class="warn-text">⚠ 一旦丢失无法找回，将导致外部手机卡无法使用。请务必提前备份，切勿删除。</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-n">4</div>
+                        <div class="step-body">
+                            <p>如需添加虚拟内存（Swap），可执行以下命令创建 200MB 的交换文件并永久挂载：</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <div class="terminal-dots"><span></span><span></span><span></span></div>
+                                    <div class="terminal-title">bash — 添加虚拟内存 Swap</div>
+                                    <button class="copy-btn" onclick="copyCode(this, 'swap-cmds')">复制</button>
+                                </div>
+                                <div class="terminal-body">
+                                    <pre id="swap-cmds"><span class="comment"># 创建 200MB swap 文件</span>
+<span class="prompt">$ </span><span class="cmd">sudo dd if=/dev/zero of=/swapfile2 bs=1M count=200</span>
+<span class="prompt">$ </span><span class="cmd">sudo chmod 600 /swapfile2</span>
+<span class="prompt">$ </span><span class="cmd">sudo mkswap /swapfile2</span>
+<span class="prompt">$ </span><span class="cmd">sudo swapon /swapfile2</span>
+<span class="comment"># 验证是否生效</span>
+<span class="prompt">$ </span><span class="cmd">free -h</span>
+<span class="comment"># 写入 fstab 实现开机自动挂载</span>
+<span class="prompt">$ </span><span class="cmd">sudo nano /etc/fstab</span>
+<span class="comment"># 在文件末尾添加以下一行后保存：</span>
+<span class="comment">/swapfile2 none swap sw 0 0</span></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-n">5</div>
+                        <div class="step-body">
+                            <p>系统自启动项都存放在 <code>/etc/rc.local</code> 文件中，可通过以下命令查看或编辑，卸载不需要的自启动程序。</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <div class="terminal-dots"><span></span><span></span><span></span></div>
+                                    <div class="terminal-title">bash — 自启动管理</div>
+                                    <button class="copy-btn" onclick="copyCode(this, 'rclocal-cmds')">复制</button>
+                                </div>
+                                <div class="terminal-body">
+                                    <pre id="rclocal-cmds"><span class="comment"># 查看自启动内容</span>
+<span class="prompt">$ </span><span class="cmd">cat /etc/rc.local</span>
+<span class="comment"># 编辑自启动文件（删除不需要的行即可卸载对应启动项）</span>
+<span class="prompt">$ </span><span class="cmd">sudo nano /etc/rc.local</span></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-n">6</div>
+                        <div class="step-body">
+                            <p>设备使用的是 Debian 12，安装软件时若软件源频繁报错，可执行以下命令一键更换为国内镜像源：</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <div class="terminal-dots"><span></span><span></span><span></span></div>
+                                    <div class="terminal-title">bash — 更换软件源</div>
+                                    <button class="copy-btn" onclick="copyCode(this, 'mirror-cmd')">复制</button>
+                                </div>
+                                <div class="terminal-body">
+                                    <pre
+                                        id="mirror-cmd"><span class="prompt">$ </span><span class="cmd">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)</span></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-n">7</div>
+                        <div class="step-body">
+                            <p>如果内存不够用，或建立虚拟内存也不理想，可以停止蓝牙和 4G 调制解调器服务来释放内存。<span class="warn-text">⚠ 禁用 ModemManager
+                                    后将永久无法使用手机卡上网（只能使用wifi网络联网），请谨慎操作。</span></p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <div class="terminal-dots"><span></span><span></span><span></span></div>
+                                    <div class="terminal-title">bash — 释放内存（注意风险）</div>
+                                    <button class="copy-btn" onclick="copyCode(this, 'disable-cmds')">复制</button>
+                                </div>
+                                <div class="terminal-body">
+                                    <pre id="disable-cmds"><span class="comment"># 禁用 4G 网络调制解调器（禁用后无法使用手机卡上网）</span>
+<span class="prompt">$ </span><span class="cmd">sudo systemctl disable ModemManager</span>
+<span class="comment"># 禁用蓝牙</span>
+<span class="prompt">$ </span><span class="cmd">sudo systemctl disable bluetooth</span></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-n">8</div>
+                        <div class="step-body">
+                            <p>这个没什么用，但是你要自己刷其他系统，切卡遇到了问题，可以尝试一下方法。系统内置两张上网卡：一张是你自己插的手机卡，另一张是自带的 eSIM 卡。<span
+                                    class="warn-text">⚠ 自带 eSIM
+                                    流量非常贵且限速，切勿充值。</span></p>
+                            <p style="margin-top:8px;font-size:14px;color:#444;">以下是切换到外部手机卡的 rc.local
+                                配置，刷机后可参考此配置恢复切卡功能。其中 <code>sim:sel</code> 控制卡槽选择，<code>sim:en</code> 控制卡槽启用，写入
+                                <code>1</code> 表示激活，写入 <code>0</code> 表示关闭。当前配置为：启用卡槽1（外部手机卡），关闭卡槽2（内置 eSIM）。如需切换回
+                                eSIM，将 <code>sim:en</code> 改为 <code>0</code>、<code>sim:en2</code> 改为 <code>1</code> 即可。
+                            </p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <div class="terminal-dots"><span></span><span></span><span></span></div>
+                                    <div class="terminal-title">bash — /etc/rc.local 切卡配置</div>
+                                    <button class="copy-btn" onclick="copyCode(this, 'simswitch-cmds')">复制</button>
+                                </div>
+                                <div class="terminal-body">
+                                    <pre id="simswitch-cmds"><span class="comment"># 编辑 rc.local，写入以下内容</span>
+<span class="prompt">$ </span><span class="cmd">sudo nano /etc/rc.local</span>
+
+<span class="comment">#!/bin/sh -e
+# Custom startup script
+sleep 10
+echo 0 > /sys/class/leds/sim:sel/brightness
+echo 1 > /sys/class/leds/sim:en/brightness
+echo 0 > /sys/class/leds/sim:sel2/brightness
+echo 0 > /sys/class/leds/sim:en2/brightness
+modprobe -r qcom-q6v5-mss
+modprobe qcom-q6v5-mss
+systemctl restart rmtfs
+systemctl restart dbus-org.freedesktop.ModemManager1.service
+exit 0</span>
+
+<span class="comment"># 赋予执行权限</span>
+<span class="prompt">$ </span><span class="cmd">sudo chmod +x /etc/rc.local</span>
+<span class="comment"># 启用并启动 rc-local 服务</span>
+<span class="prompt">$ </span><span class="cmd">sudo systemctl enable rc-local</span>
+<span class="prompt">$ </span><span class="cmd">sudo systemctl start rc-local</span></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+                <div class="card cta-card">
+                    <div class="card-label">Picoclaw 小龙虾</div>
+                    <p>注意事项阅读完成后，点击下方按钮打开 Picoclaw 小龙虾 Web 页面。</p>
+                    <a id="picoclaw-btn" href="#" class="cta-btn" target="_blank">打开 Picoclaw →</a>
+                    <div id="picoclaw-addr" class="cta-addr"></div>
+                </div>
+
+                <div class="card" style="margin-top:20px;">
+                    <div class="card-label">工具下载</div>
+                    <div class="dl-list">
+                        <a href="d623.7z" class="dl-btn">
+                            <div class="dl-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                            </div>
+                            <div>网络基带<div class="dl-meta">d623.7z</div>
+                            </div>
+                        </a>
+                        <a href="linux.7z" class="dl-btn">
+                            <div class="dl-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                            </div>
+                            <div>Linux 工具包<div class="dl-meta">linux.7z</div>
+                            </div>
+                        </a>
+                        <a href="9008drive.7z" class="dl-btn">
+                            <div class="dl-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                            </div>
+                            <div>9008 驱动<div class="dl-meta">9008drive.7z</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
+                    <a href="https://blog.csdn.net/qq_43359234/article/details/137798983" target="_blank"
+                        class="article-card">
+                        <div class="article-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                        </div>
+                        <div class="article-body">
+                            <div class="article-title">随身 WiFi 刷 Debian 系统</div>
+                            <div class="article-meta">CSDN · blog.csdn.net</div>
+                        </div>
+                        <div class="article-arrow">→</div>
+                    </a>
+                    <a href="https://www.cpolar.com/blog/flash-debian-13-and-enable-ssh-remote-access" target="_blank"
+                        class="article-card">
+                        <div class="article-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                        </div>
+                        <div class="article-body">
+                            <div class="article-title">高通 410 9008 模式 + 刷 Debian 13 图文</div>
+                            <div class="article-meta">cpolar · www.cpolar.com</div>
+                        </div>
+                        <div class="article-arrow">→</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamic Picoclaw URL
+        const host = location.hostname || '192.168.68.1';
+        const url = 'http://' + host + ':18800';
+        document.getElementById('picoclaw-btn').href = url;
+        document.getElementById('picoclaw-addr').textContent = host + ':18800';
+
+        // Copy command
+        function copyCode(btn, id) {
+            const el = document.getElementById(id);
+            // Extract plain text, strip prompt symbols
+            const text = el.innerText.replace(/^\$ /gm, '').trim();
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = '已复制 ✓';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
