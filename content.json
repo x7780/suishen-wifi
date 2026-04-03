@@ -2,7 +2,7 @@
   "version": "1.0",
   "nav": [
     {
-      "text": "购买设备",
+      "text": "闲鱼",
       "url": "https://m.tb.cn/h.ikewKeE?tk=sY5z5265Lof CZ007"
     },
     {
@@ -87,14 +87,14 @@
   ],
   "downloads": [
     {
-      "name": "示例远程工具",
-      "meta": "example.zip",
-      "url": "https://example.com/example.zip"
+      "name": "随身WiFi助手",
+      "meta": "随身WiFi助手.zip",
+      "url": "https://download.csdn.net/download/sxp309932147/92557923?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522e2db6e9ef64a7625b1116f09f20147fa%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=e2db6e9ef64a7625b1116f09f20147fa&biz_id=1&utm_medium=distribute.pc_search_result.none-task-download-2~download~baidu_landing_v2~default-1-92557923-null-null.269^v4^pc_search_download_result_base2&utm_term=%E9%9A%8F%E8%BA%ABwifi%E5%8A%A9%E6%89%8B&spm=1018.2226.3001.4451.2"
     },
     {
-      "name": "示例远程工具11",
-      "meta": "example.zip",
-      "url": "https://example.com/example.zip"
+      "name": "刷机工具大全",
+      "meta": "qitagongj",
+      "url": "https://www.123912.com/s/dgXbjv-Gfsfd"
     }
   ],
   "articles": [
@@ -105,11 +105,6 @@
     },
     {
       "title": "高通 410 9008 模式 + 刷 Debian 13 图文",
-      "meta": "cpolar · www.cpolar.com",
-      "url": "https://www.cpolar.com/blog/flash-debian-13-and-enable-ssh-remote-access"
-    },
-    {
-      "title": "刷 Debian 13 图文",
       "meta": "cpolar · www.cpolar.com",
       "url": "https://www.cpolar.com/blog/flash-debian-13-and-enable-ssh-remote-access"
     }
