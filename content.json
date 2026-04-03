@@ -85,6 +85,18 @@
       }
     }
   ],
+  "downloads": [
+    {
+      "name": "示例远程工具",
+      "meta": "example.zip",
+      "url": "https://example.com/example.zip"
+    },
+    {
+      "name": "示例远程工具11",
+      "meta": "example.zip",
+      "url": "https://example.com/example.zip"
+    }
+  ],
   "articles": [
     {
       "title": "随身 WiFi 刷 Debian 系统",
