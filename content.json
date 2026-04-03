@@ -1,9 +1,22 @@
 {
   "version": "1.0",
   "nav": [
-    { "text": "闲鱼", "url": "https://m.tb.cn/h.ikewKeE?tk=sY5z5265Lof CZ007" },
-    { "text": "GitHub", "url": "https://github.com/x7780" },
-    { "text": "刷机系统备份", "url": "https://www.123912.com/s/dgXbjv-Gfsfd" }
+    {
+      "text": "闲鱼",
+      "url": "https://m.tb.cn/h.ikewKeE?tk=sY5z5265Lof CZ007"
+    },
+    {
+      "text": "抖音",
+      "url": "https://m.tb.cn/h.ikewKeE?tk=sY5z5265Lof CZ007"
+    },
+    {
+      "text": "GitHub",
+      "url": "https://github.com/x7780"
+    },
+    {
+      "text": "刷机系统备份",
+      "url": "https://www.123912.com/s/dgXbjv-Gfsfd"
+    }
   ],
   "header": {
     "title": "开始之前，请仔细阅读",
@@ -42,7 +55,12 @@
     {
       "warn": false,
       "text": "如需管理自启动项，可在 OpenWrt 后台按以下路径操作，在「本地启动脚本」中编辑或删除对应启动项。",
-      "breadcrumb": ["OpenWrt 后台", "系统", "启动项", "本地启动脚本"]
+      "breadcrumb": [
+        "OpenWrt 后台",
+        "系统",
+        "启动项",
+        "本地启动脚本"
+      ]
     },
     {
       "warn": false,
