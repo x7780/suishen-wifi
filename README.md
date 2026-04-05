@@ -13,6 +13,19 @@
 
 只需修改 `content.json` 并推送到 `main` 分支，用户下次联网打开页面即可看到更新。
 
+> **CDN 缓存问题**：页面通过 jsDelivr CDN 拉取内容，推送后 CDN 缓存可能需要 1 小时以上才自动刷新。
+> 
+> **手动立即刷新**：推送后在浏览器访问以下链接，即可强制清除缓存，用户刷新页面后马上生效：
+> 
+> ```
+> https://purge.jsdelivr.net/gh/x7780/suishen-wifi@main/content.json
+> ```
+> 
+> 返回 `{"status":"ok"}` 表示刷新成功。
+> 
+> 访问页面进行查看是否更新
+> https://cdn.jsdelivr.net/gh/x7780/suishen-wifi@main/content.json
+
 ## 文件说明
 
 | 文件 | 说明 |
