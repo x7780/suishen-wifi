@@ -37,15 +37,13 @@ cd /root/cuberite
 
 ### 3. 下载 Cuberite
 
-根据你的系统架构选择合适的版本：
+请访问 [Cuberite 官方构建页面](https://builds.cuberite.org/) 下载 Linux arm64 版本的 Cuberite：
 
-```bash
-# 对于 32位 ARM 系统 (高通410通常是32位)
-wget https://builds.cuberite.org/job/linux-armhf/lastSuccessfulBuild/artifact/Cuberite.tar.gz
-
-# 对于 64位 ARM 系统
-# wget https://builds.cuberite.org/job/linux-aarch64/lastSuccessfulBuild/artifact/Cuberite.tar.gz
-```
+1. 打开浏览器，访问 https://builds.cuberite.org/
+2. 找到 `linux-aarch64` 构建任务
+3. 点击 "lastSuccessfulBuild" 链接
+4. 下载 `Cuberite.tar.gz` 文件
+5. 将下载的文件上传到设备的 `/root/cuberite` 目录
 
 ### 4. 解压文件
 
@@ -98,20 +96,23 @@ nohup ./Cuberite > server.log 2>&1 &
 
 ## 优化配置
 
-由于高通410资源有限，建议进行以下优化：
+由于高通410资源有限，建议进行以下优化以获得更好的游戏体验：
 
 1. **内存优化**：编辑 `Cuberite.ini` 文件
    ```ini
    [Server]
    MaxChunkCacheSize=100
    ```
+   **说明**：限制服务器缓存的区块数量，减少内存使用。默认值可能较高，设置为100可以显著降低内存占用。
 
 2. **视距优化**：在 `server.properties` 中
    ```properties
    view-distance=4
    ```
+   **说明**：减少玩家可见的区块范围，降低服务器的计算和渲染负担。默认视距通常为10，设置为4可以大幅减少资源消耗。
 
 3. **禁用不必要的功能**：在 `Cuberite.ini` 中禁用不需要的插件
+   **说明**：禁用未使用的插件可以减少服务器的内存占用和CPU负载，提高整体性能。
 
 ## 常用命令
 
@@ -122,49 +123,6 @@ nohup ./Cuberite > server.log 2>&1 &
 - `kick <玩家名> [原因]`: 踢出玩家
 - `ban <玩家名> [原因]`: 封禁玩家
 - `unban <玩家名>`: 解除封禁
-
-## 自动启动设置
-
-在OpenWrt系统中，创建启动脚本实现开机自启：
-
-```bash
-# 创建启动脚本
-nano /etc/init.d/cuberite
-```
-
-添加以下内容：
-
-```bash
-#!/bin/sh /etc/rc.common
-
-START=99
-STOP=10
-
-start() {
-    # 进入服务端目录
-    cd /root/cuberite
-    # 后台运行服务端
-    ./Cuberite > /var/log/cuberite.log 2>&1 &
-}
-
-stop() {
-    # 查找并停止Cuberite进程
-    killall Cuberite
-}
-```
-
-设置脚本权限并启用服务：
-
-```bash
-# 设置执行权限
-chmod +x /etc/init.d/cuberite
-
-# 启用服务
-/etc/init.d/cuberite enable
-
-# 启动服务
-/etc/init.d/cuberite start
-```
 
 ## 故障排除
 
