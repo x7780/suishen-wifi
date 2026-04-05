@@ -8,7 +8,7 @@
 
 ## 支持版本
 
-- Minecraft Java 版: 1.8 - 1.12
+- Minecraft Java 版: 1.8 - 1.12.2
 - 客户端版本兼容性良好，支持大多数现代客户端
 - 注意：Minecraft Java Edition 1.13+ 支持正在开发中
 
