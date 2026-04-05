@@ -60,6 +60,24 @@
         "系统",
         "启动项",
         "本地启动脚本"
+      ],
+      "terminals": [
+        {
+          "title": "bash — 启动 Minecraft 服务端",
+          "lines": [
+            "# 启动 Cuberite Minecraft 服务端",
+            "# 端口默认 25565，启动后玩家即可连接",
+            "/root/Cuberite"
+          ]
+        },
+        {
+          "title": "bash — 启动 Picoclaw 小龙虾",
+          "lines": [
+            "# 启动 Picoclaw AI 小龙虾（后台运行）",
+            "# 日志输出到 /tmp/picoclaw.log",
+            "cd /root/picoclaw && ./picoclaw-launcher -public > /tmp/picoclaw.log 2>&1 &"
+          ]
+        }
       ]
     },
     {
