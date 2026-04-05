@@ -50,9 +50,9 @@ cd /root/cuberite
 
 ### 3. 下载 Cuberite
 
-请访问 [Cuberite 官方构建页面](https://builds.cuberite.org/) 下载 Linux arm64 版本的 Cuberite：
+请访问 [Cuberite 官方构建页面](https://www.cuberite.org/) 下载 Linux arm64 版本的 Cuberite：
 
-1. 打开浏览器，访问 https://builds.cuberite.org/
+1. 打开浏览器，访问 https://www.cuberite.org/
 2. 找到 `linux-aarch64` 构建任务
 3. 点击 "lastSuccessfulBuild" 链接
 4. 下载 `Cuberite.tar.gz` 文件
