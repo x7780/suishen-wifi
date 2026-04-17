@@ -101,6 +101,13 @@
         "title": "bash — picoclaw",
         "code": "cd /root/picoclaw && ./picoclaw-launcher -public > /tmp/picoclaw.log 2>&1 &"
       }
+    },
+    {
+      "warn": false,
+      "text": "安装插件的时候可能会破坏系统，特别是冲突插件，例如防火墙，请先把本地基带备份到你本地电脑，在安装插件",
+      "warnings": [
+        "⚠ 大部分插件没有冲突，部分插件会和原系统冲突。"
+      ]
     }
   ],
   "downloads": [
