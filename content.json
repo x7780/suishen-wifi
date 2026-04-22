@@ -25,7 +25,7 @@
   "steps": [
     {
       "warn": false,
-      "text": "发现设备不能安装插件，更新源也出错，主要原因是版本使用的SNAPSHOT版本，所有本机驱动都是居于这个版本定制的，全网刷机包都是这样。那要安装插件怎么办，只能自己使用最新官方版本，或者自己编译补丁包了。",
+      "text": "发现设备不能安装插件，更新源也出错，主要原因是版本使用的SNAPSHOT版本，所有本机驱动都是基于这个版本定制的，全网刷机包都是这样。那要安装插件怎么办，只能自己使用最新官方版本，或者自己编译补丁包了。",
       "warnings": [
         "⚠ 升级最新版本补丁，需要先备份rootfs和boot俩个分区。",
         "⚠ 小白不建议刷机，刷机可能会导致不能开机，刷机请先学习一些刷机知识。",
@@ -64,7 +64,7 @@
     },
     {
       "warn": false,
-      "text": "如果遇到OPKG无法安装，请去OPKG配置文件，里面第一个源连接处下载kernal开头的软件包，安装后重启",
+      "text": "如果遇到OPKG无法安装，请去OPKG配置文件，里面第一个源连接处下载kernel开头的软件包，安装后重启",
       "warnings": [
         "⚠ 出现这种问题因为SNAPSHOT版本过期了，更新一下就好了。"
       ]
@@ -101,23 +101,27 @@
       "warn": false,
       "text": "如果不想使用外部大卡，可以自行更改切开脚本（部分机型没有这个脚本）",
       "warnings": [
-        "⚠ 如果你在位置没找到切卡脚本，那只能说明你的机器不能切卡"
+        "⚠ 如果你在这里没找到切卡脚本，那只能说明你的机器不能切卡"
       ],
-      "terminal": {
-        "title": "bash — 切卡脚本位置",
-        "code": "/etc/cardswitch/cardswitch.sh"
-      }
+      "terminals": [
+        {
+          "title": "bash — 切卡脚本位置",
+          "code": "/etc/cardswitch/cardswitch.sh"
+        }
+      ]
     },
     {
       "warn": false,
-      "text": "如果你感觉picoclaw ai 这个小龙虾太站内存了，可以在启动项里面删除",
+      "text": "如果你感觉picoclaw ai 这个小龙虾太占内存了，可以在启动项里面删除",
       "warnings": [
         "⚠ 这个是go写的小龙虾，可以帮你完成一些工作，运行任务时占内存"
       ],
-      "terminal": {
-        "title": "bash — picoclaw",
-        "code": "cd /root/picoclaw && ./picoclaw-launcher -public > /tmp/picoclaw.log 2>&1 &"
-      }
+      "terminals": [
+        {
+          "title": "bash — picoclaw",
+          "code": "cd /root/picoclaw && ./picoclaw-launcher -public > /tmp/picoclaw.log 2>&1 &"
+        }
+      ]
     },
     {
       "warn": false,
