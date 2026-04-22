@@ -124,14 +124,19 @@
   ],
   "articles": [
     {
-      "title": "随身 WiFi 刷 Debian 系统",
-      "meta": "CSDN · blog.csdn.net",
-      "url": "https://blog.csdn.net/qq_43359234/article/details/137798983"
+      "title": "极简的openwrt固件刷机包",
+      "meta": "github · github.com",
+      "url": "https://github.com/x7780/Actions-immortalwrt"
     },
     {
       "title": "高通 410 9008 模式 + 刷 Debian 13 图文",
       "meta": "cpolar · www.cpolar.com",
       "url": "https://www.cpolar.com/blog/flash-debian-13-and-enable-ssh-remote-access"
+    },
+    {
+      "title": "ImmortalWrt编译教程,定制固件",
+      "meta": "geekxw · www.geekxw.top",
+      "url": "https://www.geekxw.top/2053/"
     }
   ]
 }
