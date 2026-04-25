@@ -835,12 +835,8 @@
         if (mcIpElement) mcIpElement.textContent = host;
         if (mcWebElement) mcWebElement.textContent = '8080';
 
-        // ── 内置兜底内容（首次无网络时使用）──
-        const FALLBACK = { "version": "1.0", "nav": [{ "text": "闲鱼", "url": "https://m.tb.cn/h.ikewKeE?tk=sY5z5265Lof CZ007" }, { "text": "GitHub", "url": "https://github.com/x7780" }, { "text": "刷机系统备份", "url": "https://www.123912.com/s/dgXbjv-Gfsfd" }], "header": { "title": "开始之前，请仔细阅读", "subtitle": "先阅读使用说明，避免因操作不当导致功能损坏。" }, "steps": [{ "warn": false, "text": "设备支持插入手机卡，兼容网通、移动、电信。虚拟号及部分被屏蔽号码可能无法使用，推荐优先使用联通或电信，移动在部分地区受限。", "warnings": ["⚠ 如果你感觉手机卡不能使用，不要着急，可以使用家里网络，或者插入电脑直接连接设置。", "⚠ 设备上的盖帽不要拿掉，拿掉会导致手机卡信号变弱。"] }, { "warn": false, "text": "系统热点与路由器 WiFi 存在冲突，二者只能同时存在一个。连接家庭 WiFi 后热点可能自动断开，连接家里wifi是要设置ip，避免 IP 丢失。", "warnings": ["⚠ 使用手机卡热点，硬件会发热，这是硬件通病。"] }, { "warn": true, "text": "网络基带为设备独有，包含移动网络设置与驱动，每台设备均不相同，丢失无法找回，我这没有备份。", "warnings": ["⚠ 一旦丢失无法找回，将导致外部手机卡无法使用。请务必提前备份，切勿删除。"] }, { "warn": false, "text": "如果遇到OPKG无法安装，请去OPKG配置文件，里面第一个源连接处下载kernal开头的软件包，安装后重启", "warnings": ["⚠ 出现这种问题因为SNAPSHOT版本过期了，更新一下就好了。"] }, { "warn": false, "text": "如需管理自启动项，可在 OpenWrt 后台按以下路径操作，在「本地启动脚本」中编辑或删除对应启动项。", "breadcrumb": ["OpenWrt 后台", "系统", "启动项", "本地启动脚本"] }, { "warn": false, "text": "如果不想使用外部大卡，可以自行更改切开脚本（部分机型没有这个脚本）", "warnings": ["⚠ 如果你在位置没找到切卡脚本，那只能说明你的机器不能切卡"], "terminal": { "title": "bash — 切卡脚本位置", "code": "/etc/cardswitch/cardswitch.sh" } }, { "warn": false, "text": "如果你感觉picoclaw ai 这个小龙虾太站内存了，可以在启动项里面删除", "warnings": ["⚠ 这个是go写的小龙虾，可以帮你完成一些工作，运行任务时占内存"], "terminal": { "title": "bash — picoclaw", "code": "cd /root/picoclaw && ./picoclaw-launcher -public > /tmp/picoclaw.log 2>&1 &" } }], "downloads": [], "articles": [{ "title": "随身 WiFi 刷 Debian 系统", "meta": "CSDN · blog.csdn.net", "url": "https://blog.csdn.net/qq_43359234/article/details/137798983" }, { "title": "高通 410 9008 模式 + 刷 Debian 13 图文", "meta": "cpolar · www.cpolar.com", "url": "https://www.cpolar.com/blog/flash-debian-13-and-enable-ssh-remote-access" }] };
-
         // ── 远程 content.json 地址 ──
         const REMOTE_URL = 'https://cdn.jsdelivr.net/gh/x7780/suishen-wifi@main/content.json';
-        const CACHE_KEY = 'guide_content';
 
         // ── 渲染函数 ──
         function render(data) {
@@ -906,7 +902,7 @@
             }
         }
 
-        // ── 加载逻辑：远程优先 → localStorage缓存 → 本地 content.json ──
+        // ── 加载逻辑：远程优先 → 本地 content.json ──
         async function loadContent() {
             try {
                 const res = await Promise.race([
@@ -914,22 +910,11 @@
                     new Promise((_, reject) => setTimeout(() => reject('timeout'), 4000))
                 ]);
                 const data = await res.json();
-                localStorage.setItem(CACHE_KEY, JSON.stringify(data));
                 render(data);
             } catch {
-                const cached = localStorage.getItem(CACHE_KEY);
-                if (cached) {
-                    render(JSON.parse(cached));
-                } else {
-                    // 远程失败且无缓存，读本地 content.json
-                    try {
-                        const res = await fetch('./content.json');
-                        const data = await res.json();
-                        render(data);
-                    } catch {
-                        render(FALLBACK);
-                    }
-                }
+                const res = await fetch('./content.json');
+                const data = await res.json();
+                render(data);
             }
         }
 
