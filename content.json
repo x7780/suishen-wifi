@@ -41,12 +41,12 @@
             "# 刷机前请备份分区，或者备份好modem.7z基带。",
             "# 基带在首页下载区，这个非常重要，丢失无法找回",
             "# 1.利用github自定义全新固件",
-            "https://github.com/x7780/immortalwrt-Actios"
+            "https://github.com/x7780/immortalwrt-Actios",
             "# 2.升级最新固件发现手机卡蜂窝不能用，请还原基带。",
             "#/lib/firmware  #把基带还原到这个目录"
           ]
         }
-      ]        
+      ]
     },
     {
       "warn": false,
