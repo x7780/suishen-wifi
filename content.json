@@ -100,7 +100,7 @@
     },
     {
       "warn": false,
-      "text": "如果不想使用外部大卡，可以自行更改切开脚本（部分机型没有这个脚本）",
+      "text": "如果不想使用外部大卡，可以自行更改切卡脚本（部分机型没有这个脚本）",
       "warnings": [
         "⚠ 如果你在这里没找到切卡脚本，那只能说明你的机器不能切卡"
       ],
@@ -149,6 +149,11 @@
       "title": "高通410随身wifi玩法讨论社区",
       "meta": "github · github.com",
       "url": "https://github.com/x7780/immortalwrt-Actios/discussions"
+    },
+    {
+      "title": "一张图学会升级openwrt固件",
+      "meta": "github · github.com",
+      "url": "https://raw.githubusercontent.com/x7780/immortalwrt-Actios/main/img/4.png"
     },
     {
       "title": "极简的openwrt固件刷机包",
