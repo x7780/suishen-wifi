@@ -173,5 +173,7 @@ jobs:
 
           # 提交并推送（先拉取最新代码避免冲突）
           git diff --staged --quiet || git commit -m "Auto-save: Articles and memory [$(date '+%Y-%m-%d %H:%M')]"
+          git stash || true
           git pull --rebase origin main || true
+          git stash pop || true
           git push
