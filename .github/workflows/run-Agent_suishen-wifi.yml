@@ -28,6 +28,18 @@ jobs:
           cp -r Ai_Agent/Agent_suishen-wifi/workspace ~/.picoclaw/workspace
           mkdir -p ~/.picoclaw/workspace/memory
 
+      - name: Verify secrets loaded
+        env:
+          PICO_TOKEN: ${{ secrets.PICO_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          DOUBAO_API_KEY: ${{ secrets.DOUBAO_API_KEY }}
+        run: |
+          echo "========== Secrets Verification =========="
+          echo "PICO_TOKEN: $(if [ -n "$PICO_TOKEN" ]; then echo "✅ Loaded (length: ${#PICO_TOKEN})"; else echo "❌ NOT SET"; fi)"
+          echo "TELEGRAM_BOT_TOKEN: $(if [ -n "$TELEGRAM_BOT_TOKEN" ]; then echo "✅ Loaded (length: ${#TELEGRAM_BOT_TOKEN})"; else echo "❌ NOT SET"; fi)"
+          echo "DOUBAO_API_KEY: $(if [ -n "$DOUBAO_API_KEY" ]; then echo "✅ Loaded (length: ${#DOUBAO_API_KEY})"; else echo "❌ NOT SET"; fi)"
+          echo "========================================="
+
       - name: Generate security config from secrets
         env:
           PICO_TOKEN: ${{ secrets.PICO_TOKEN }}
