@@ -1,0 +1,29 @@
+{
+  "key": "sk_v1_2b7ccc81ff509800613d12937fc1ece5601b5c52deb1f341c85c371aa348c518",
+  "summary": "",
+  "skip": 0,
+  "count": 2,
+  "created_at": "2026-04-28T05:34:23.378421556Z",
+  "updated_at": "2026-04-28T05:35:13.144036774Z",
+  "scope": {
+    "version": 1,
+    "agent_id": "main",
+    "channel": "pico",
+    "account": "default",
+    "dimensions": [
+      "chat"
+    ],
+    "values": {
+      "chat": "direct:pico:7448b3e6-b291-4c98-9e82-f61dc0fddc69"
+    }
+  },
+  "aliases": [
+    "agent:main:main",
+    "agent:main:direct:pico-user",
+    "agent:main:pico:direct:pico-user",
+    "agent:main:pico:default:direct:pico-user",
+    "agent:main:direct:pico:7448b3e6-b291-4c98-9e82-f61dc0fddc69",
+    "agent:main:pico:direct:pico:7448b3e6-b291-4c98-9e82-f61dc0fddc69",
+    "agent:main:pico:default:direct:pico:7448b3e6-b291-4c98-9e82-f61dc0fddc69"
+  ]
+}
