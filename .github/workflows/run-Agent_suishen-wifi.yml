@@ -19,7 +19,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup binary permissions
-        run: chmod +x picoclaw/picoclaw-launcher picoclaw/picoclaw
+        run: chmod +x Ai_Agent/picoclaw/picoclaw-launcher Ai_Agent/picoclaw/picoclaw
 
       - name: Setup config
         run: |
@@ -124,7 +124,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          PICOCLAW_HOME=~/.picoclaw PICOCLAW_LOG_LEVEL=debug ./picoclaw/picoclaw gateway
+          PICOCLAW_HOME=~/.picoclaw PICOCLAW_LOG_LEVEL=debug ./Ai_Agent/picoclaw/picoclaw gateway
           echo "Gateway exited with code: $?"
 
       - name: Save generated articles and images
