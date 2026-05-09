@@ -24,10 +24,9 @@ jobs:
       - name: Setup config
         run: |
           mkdir -p ~/.picoclaw
-          cp Agent_suishen-wifi/config.json ~/.picoclaw/config.json
-          cp -r Agent_suishen-wifi/workspace ~/.picoclaw/workspace
-          cp -r Agent_suishen-wifi/workspace-writer ~/.picoclaw/workspace-writer
-          cp -r Agent_suishen-wifi/workspace-publisher ~/.picoclaw/workspace-publisher
+          cp Ai_Agent/Agent_suishen-wifi/config.json ~/.picoclaw/config.json
+          cp -r Ai_Agent/Agent_suishen-wifi/workspace ~/.picoclaw/workspace
+          mkdir -p ~/.picoclaw/workspace/memory
 
       - name: Generate security config from secrets
         env:
@@ -132,21 +131,21 @@ jobs:
         run: |
           # 保存生成的文章
           if [ -d ~/.picoclaw/workspace/article ]; then
-            mkdir -p Agent_suishen-wifi/workspace/article
-            cp -r ~/.picoclaw/workspace/article/* Agent_suishen-wifi/workspace/article/ 2>/dev/null || true
-            echo "✅ Articles saved to Agent_suishen-wifi/workspace/article/"
+            mkdir -p Ai_Agent/Agent_suishen-wifi/workspace/article
+            cp -r ~/.picoclaw/workspace/article/* Ai_Agent/Agent_suishen-wifi/workspace/article/ 2>/dev/null || true
+            echo "✅ Articles saved to Ai_Agent/Agent_suishen-wifi/workspace/article/"
           fi
 
           # 保存 memory
-          cp ~/.picoclaw/workspace/memory/MEMORY.md Agent_suishen-wifi/workspace/memory/MEMORY.md 2>/dev/null || true
+          cp ~/.picoclaw/workspace/memory/MEMORY.md Ai_Agent/Agent_suishen-wifi/workspace/memory/MEMORY.md 2>/dev/null || true
 
           # 配置 git
           git config user.name "suishen-wifi Bot"
           git config user.email "bot@suishen-wifi"
 
           # 添加所有变更的文件
-          git add Agent_suishen-wifi/workspace/article/ 2>/dev/null || true
-          git add Agent_suishen-wifi/workspace/memory/MEMORY.md 2>/dev/null || true
+          git add Ai_Agent/Agent_suishen-wifi/workspace/article/ 2>/dev/null || true
+          git add Ai_Agent/Agent_suishen-wifi/workspace/memory/MEMORY.md 2>/dev/null || true
 
           # 提交并推送
           git diff --staged --quiet || git commit -m "� Auto-save: Articles and memory [$(date '+%Y-%m-%d %H:%M')]"
