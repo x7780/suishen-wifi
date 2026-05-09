@@ -171,6 +171,7 @@ jobs:
           git add Ai_Agent/Agent_suishen-wifi/workspace/article/ 2>/dev/null || true
           git add Ai_Agent/Agent_suishen-wifi/workspace/memory/MEMORY.md 2>/dev/null || true
 
-          # 提交并推送
+          # 提交并推送（先拉取最新代码避免冲突）
           git diff --staged --quiet || git commit -m "Auto-save: Articles and memory [$(date '+%Y-%m-%d %H:%M')]"
+          git pull --rebase origin main || true
           git push
