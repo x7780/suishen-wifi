@@ -9,7 +9,7 @@ on:
 jobs:
   content-update:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 60
     permissions:
       contents: write
 
@@ -123,8 +123,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          PICOCLAW_HOME=~/.picoclaw PICOCLAW_LOG_LEVEL=debug ./Ai_Agent/picoclaw/picoclaw gateway
-          echo "Gateway exited with code: $?"
+          # 后台启动 gateway
+          PICOCLAW_HOME=~/.picoclaw PICOCLAW_LOG_LEVEL=info ./Ai_Agent/picoclaw/picoclaw gateway &
+          PID=$!
+          echo "Gateway started with PID: $PID"
+
+          # 等待 heartbeat 执行和写作任务（15分钟足够）
+          echo "Waiting 15 minutes for writing task to complete..."
+          sleep 900
+
+          # 优雅停止 gateway
+          echo "Stopping gateway..."
+          kill $PID 2>/dev/null || true
+          wait $PID 2>/dev/null || true
+          echo "Gateway stopped"
 
       - name: Save generated articles and images
         if: always()
@@ -148,5 +160,5 @@ jobs:
           git add Ai_Agent/Agent_suishen-wifi/workspace/memory/MEMORY.md 2>/dev/null || true
 
           # 提交并推送
-          git diff --staged --quiet || git commit -m "� Auto-save: Articles and memory [$(date '+%Y-%m-%d %H:%M')]"
+          git diff --staged --quiet || git commit -m "Auto-save: Articles and memory [$(date '+%Y-%m-%d %H:%M')]"
           git push
