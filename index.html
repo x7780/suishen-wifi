@@ -486,6 +486,22 @@
             font-family: 'SF Mono', monospace;
         }
 
+        .mini-btn {
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: opacity 0.15s, transform 0.15s;
+        }
+
+        .mini-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
         /* ── Articles ── */
         .article-card {
             display: flex;
@@ -579,6 +595,7 @@
             nav {
                 padding: 0 20px;
             }
+
         }
 
         /* ── Skeleton ── */
@@ -653,6 +670,61 @@
         #content {
             display: none;
         }
+
+        /* ── 工具行 ── */
+        .tool-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tool-row + .tool-row {
+            margin-top: 10px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .tool-row .tool-icon {
+            font-size: 20px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .tool-row .tool-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .tool-row .tool-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.2px;
+            margin-bottom: 2px;
+        }
+
+        .tool-row .tool-addr {
+            font-size: 10px;
+            color: #777;
+            font-family: 'SF Mono', monospace;
+        }
+
+        .tool-row .tool-btn {
+            flex-shrink: 0;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 14px;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: opacity 0.15s, transform 0.15s;
+        }
+
+        .tool-row .tool-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 
@@ -696,15 +768,22 @@
                             style="margin-top:16px;background:linear-gradient(90deg,#1a5a8a 25%,#1e6fa8 50%,#1a5a8a 75%);background-size:600px 100%;">
                         </div>
                     </div>
-                    <div class="card" style="margin-top:20px;background:#1a1a18;border-color:#1a1a18;">
-                        <div class="sk sk-line short"
-                            style="margin-bottom:16px;background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;">
+                    <div class="card" style="margin-top:20px;padding:20px;background:#1a1a18;border-color:#1a1a18;">
+                        <div class="tool-row">
+                            <div class="sk" style="width:20px;height:20px;border-radius:4px;flex-shrink:0;background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;"></div>
+                            <div style="flex:1;min-width:0;">
+                                <div class="sk sk-line short" style="margin-bottom:4px;background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;"></div>
+                                <div class="sk sk-line" style="width:55%;margin-bottom:0;background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;"></div>
+                            </div>
+                            <div class="sk" style="width:48px;height:26px;border-radius:7px;flex-shrink:0;background:linear-gradient(90deg,#c0521e 25%,#e8622a 50%,#c0521e 75%);background-size:600px 100%;"></div>
                         </div>
-                        <div class="sk sk-line mid"
-                            style="background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;">
-                        </div>
-                        <div class="sk sk-btn"
-                            style="margin-top:16px;background:linear-gradient(90deg,#c0521e 25%,#e8622a 50%,#c0521e 75%);background-size:600px 100%;">
+                        <div class="tool-row">
+                            <div class="sk" style="width:20px;height:20px;border-radius:4px;flex-shrink:0;background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;"></div>
+                            <div style="flex:1;min-width:0;">
+                                <div class="sk sk-line short" style="margin-bottom:4px;background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;"></div>
+                                <div class="sk sk-line" style="width:55%;margin-bottom:0;background:linear-gradient(90deg,#2a2a28 25%,#333330 50%,#2a2a28 75%);background-size:600px 100%;"></div>
+                            </div>
+                            <div class="sk" style="width:48px;height:26px;border-radius:7px;flex-shrink:0;background:linear-gradient(90deg,#c0521e 25%,#e8622a 50%,#c0521e 75%);background-size:600px 100%;"></div>
                         </div>
                     </div>
                     <div
@@ -761,18 +840,23 @@
                         <div id="openwrt-addr" class="cta-addr"></div>
                     </div>
 
-                    <div class="card cta-card" style="margin-top:20px;">
-                        <div class="card-label">Picoclaw 小龙虾</div>
-                        <p>点击下方按钮打开 Picoclaw 小龙虾 Web 页面。</p>
-                        <a id="picoclaw-btn" href="#" class="cta-btn" target="_blank">进入 Picoclaw →</a>
-                        <div id="picoclaw-addr" class="cta-addr"></div>
-                    </div>
-
-                    <div class="card cta-card" style="margin-top:20px;">
-                        <div class="card-label">SimAdmin 手机卡管理</div>
-                        <p>点击下方按钮打开 sim手机卡 Web 页面。</p>
-                        <a id="SimAdmin-btn" href="#" class="cta-btn" target="_blank">进入 SimAdmin →</a>
-                        <div id="SimAdmin-addr" class="cta-addr"></div>
+                    <div class="card cta-card" style="margin-top:20px; padding:20px;">
+                        <div class="tool-row">
+                            <div class="tool-icon">🦞</div>
+                            <div class="tool-info">
+                                <div class="tool-name">Picoclaw 小龙虾</div>
+                                <div class="tool-addr" id="picoclaw-addr"></div>
+                            </div>
+                            <a id="picoclaw-btn" href="#" target="_blank" class="tool-btn">打开 →</a>
+                        </div>
+                        <div class="tool-row">
+                            <div class="tool-icon">📱</div>
+                            <div class="tool-info">
+                                <div class="tool-name">SimAdmin 手机卡</div>
+                                <div class="tool-addr" id="SimAdmin-addr"></div>
+                            </div>
+                            <a id="SimAdmin-btn" href="#" target="_blank" class="tool-btn">打开 →</a>
+                        </div>
                     </div>
 
                     <!-- Minecraft 服务端提示 -->
