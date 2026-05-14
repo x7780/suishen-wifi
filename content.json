@@ -113,6 +113,19 @@
     },
     {
       "warn": false,
+      "text": "酷安网友（邻家小少）提供的istoreos脚本，可以安装istoreos主题，商城等插件",
+      "warnings": [
+        "⚠ 包括istoreos大部分功能，应用擅商城，主题，向导，硬盘管理等"
+      ],
+      "terminals": [
+        {
+          "title": "bash — istoreos 安装脚本位置",
+          "code": "sh -c \"$(curl -fsSL https://cafe.cpolar.cn/wkdaily/gl/raw/branch/main/gl-inet.sh)\""
+        }
+      ]
+    },
+    {
+      "warn": false,
       "text": "如果你感觉picoclaw ai 这个小龙虾太占内存了，可以在启动项里面删除",
       "warnings": [
         "⚠ 这个是go写的小龙虾，可以帮你完成一些工作，运行任务时占内存"
