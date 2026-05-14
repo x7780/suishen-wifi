@@ -768,6 +768,13 @@
                         <div id="picoclaw-addr" class="cta-addr"></div>
                     </div>
 
+                    <div class="card cta-card" style="margin-top:20px;">
+                        <div class="card-label">SimAdmin 手机卡管理</div>
+                        <p>点击下方按钮打开 sim手机卡 Web 页面。</p>
+                        <a id="SimAdmin-btn" href="#" class="cta-btn" target="_blank">进入 SimAdmin →</a>
+                        <div id="SimAdmin-addr" class="cta-addr"></div>
+                    </div>
+
                     <!-- Minecraft 服务端提示 -->
                     <!--<div
                         style="margin-top:14px;padding:10px 14px;background:#0d1a0d;border:1px solid #1a3a1a;border-left:3px solid #3fb950;border-radius:10px;display:flex;align-items:center;gap:10px;">
@@ -824,9 +831,11 @@
 
     <script>
         // ── 设备按钮 URL（不走远程更新）──
-        const host = location.hostname || '192.168.68.1';
+        const host = location.hostname || '192.168.1.1';
         document.getElementById('picoclaw-btn').href = 'http://' + host + ':18800';
         document.getElementById('picoclaw-addr').textContent = host + ':18800';
+        document.getElementById('SimAdmin-btn').href = 'http://' + host + ':3000';
+        document.getElementById('SimAdmin-addr').textContent = host + ':3000';
         document.getElementById('openwrt-btn').href = 'http://' + host + '/cgi-bin/luci';
         document.getElementById('openwrt-addr').textContent = host + '/cgi-bin/luci';
         // 仅当Minecraft卡片元素存在时才设置内容
